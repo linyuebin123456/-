@@ -1,0 +1,79 @@
+import pandas as pd 
+import seaborn as sns # drawing
+import matplotlib.pyplot as plt
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import GridSearchCV
+import warnings
+warnings.filterwarnings('ignore')
+
+
+# import data 
+data.info()
+data.duplicated().sum()
+# 查看重复记录
+
+#进行数据预处理
+data.describe()
+
+#查看属性具体值
+data.quality.value_counts()
+#绘制饼图
+wine.quality.value_counts().plot(kind = 'pie',autopct = '%.2f')
+#查看相关系数
+wine.corr().quality
+#bar图像
+sns.barplot(x='quality',y='volatile acidity',data=wine)
+
+#进行数据分箱
+from sklearn.preprocessing import LabelEncoder
+bins=(2,4,6,8)
+group_names = ['low','medium','high']
+wine['quality_lb'] = pd.cut(wine['quality'],bins=bins, labels = group_names]
+lb_quality = LabelEncoder()
+wine['label'] = lb_quality.fit_transform(wine['quality'])
+#统计新类别的分布
+wine.label.value_counts()
+
+X = wine.iloc[:,:-1]
+Y = wine.label
+
+import sklearn.model_selection import train_test_split
+x_train,x_test,y_train,y_test = train_test_split(X,Y,test_size=0.2)
+
+from sklearn.preprocessing import scale
+X_train = scale(X_train)
+Y_train = scale(Y_train)
+
+#导入随机森林的学习包，对结果进行测试
+from sklearn.metrics import confusion_matrix
+rfc = RandomForestClassifier(n_estimators =200)
+rfc.fit(X_train,y_train)
+y_pred = rfc.predict(X_test)
+print(confusion_matrix(y_test,y_pred))
+
+#人工调节参数，寻找最合适的超参数
+param_rfc = {
+            "n_estimators":[10,20,30,40,50,60,70,80,90]
+            "criterion":["gini","entropy"
+            }
+grid_rfc = GridSearchCV(rfc,param_rfc,iid = False)
+grid_rfc.fit(X_train,Y_train)
+best_param_rfc = grid_rfc.best_params_
+print(best_param_rfc)
+rfc = RandomforestClassifier(n_estimators = best_params_
+#继续重新检测模型
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
