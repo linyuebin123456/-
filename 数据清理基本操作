@@ -1,0 +1,22 @@
+traintest = pd.concat([train,test],axis=0)
+feats_counts = train.numique(dropna = False)
+feats_counts.sort_values()[:10]
+constant_features =feats_counts.loc[feats_counts == 1].index.tolist()
+print(constant_features)
+
+traintest.drop(constant_features.axis = 1, inplace =True)
+
+
+
+#remove duplicated features移除重复的数据
+traintest.fillna('NAN',inplace =True)
+import cPickle as pickle 
+pickle.dump()
+traintest.drop()
+
+
+# determine types
+nunique = train.nunique(dropna = False)
+#建立一个直方图
+plt.figure(fig_size =(14,6))
+plt.hist(nunique.astype(float)/train.shape[0],bins=100)
