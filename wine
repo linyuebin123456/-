@@ -7,6 +7,14 @@ import warnings
 warnings.filterwarnings('ignore')
 
 
+
+#数据预处理
+sklearn.preprocessing.MinMaxScaler()
+变到0-1之间
+sklearn.preprocessing.Standard.Scaler()
+变成均值为0，方差为1、
+
+
 # import data 
 data.info()
 data.duplicated().sum()
