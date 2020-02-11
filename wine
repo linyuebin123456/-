@@ -10,11 +10,13 @@ warnings.filterwarnings('ignore')
 # import data 
 data.info()
 data.duplicated().sum()
-# 查看重复记录
-
+#查看重复记录
 #进行数据预处理
 data.describe()
-
+#查看数据缺失值
+data.isnull().sum()
+#补充缺失值
+data = data.fillna()
 #查看属性具体值
 data.quality.value_counts()
 #绘制饼图
